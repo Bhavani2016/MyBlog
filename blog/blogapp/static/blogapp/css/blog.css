@@ -1,0 +1,27 @@
+footer {
+    margin: 0,auto;
+    text-align: center;
+}
+.headerimage img{
+    width: 100%;
+    height: 300px;
+}
+
+.navlink.active{
+    font-weight: bold;
+}
+.pagination{
+    margin-left: 500px;
+}
+
+.comment {
+
+    margin: 20px 0px 20px 20px;
+    border-style: dotted;
+    border-color: black;
+    background: #D3D3D3;
+}
+
+h4{
+    text-align: center;
+}

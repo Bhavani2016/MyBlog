@@ -1,0 +1,3 @@
+pip install ckeditor
+
+pip install sorl-thumbnail

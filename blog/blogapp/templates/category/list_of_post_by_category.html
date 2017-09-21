@@ -1,0 +1,41 @@
+{% extends  'blogapp/base.html' %}
+{% block title %} {{category}} {% endblock %}
+
+{% block content %}
+{% include 'blogapp/header.html' with allCategory=categories %}
+<div class="headerimage">
+	<img src="{{category.image.url }}" class="img-fluid" alt="Responsive image">
+</div>
+	
+
+<hr>
+{% for singlepost in post %}
+          <div class="row">
+          <div class="col-md-1"></div>
+
+            <div class="col-md-5">
+              <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{ singlepost.image.url }}" alt="">
+              </a>
+            </div>
+            
+            <div class="col-md-5">
+              <h3>{{ singlepost.title }} </h3>
+              <div >
+                <p class="date">Published {{ singlepost.publish }} by {{singlepost.author }} </p>
+              </div>
+              {% autoescape off %}
+                <p class="card-text">{{ singlepost.body| truncatewords:30 }} </p>
+              {% endautoescape %}
+              <br>
+              
+               <a href="{{  singlepost.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+           <hr>
+      {% endfor %}
+
+      {% include "pagination.html" with page=post %}
+      <hr>
+     {% endblock %}

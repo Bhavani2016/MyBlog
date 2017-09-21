@@ -1,0 +1,133 @@
+
+{% extends "blogapp/base.html" %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %}
+{% include 'blogapp/header.html' with allCategory=categorys  %}
+ 
+ 	<!--<h1> {{ post.title }} </h1>
+ 	<img src="{{post.image.url }}"  width="250">
+ 	<p class="date"> Published {{ post.publish }} by {{ post.author }}
+ 	{% autoescape off %}
+		{{ post.body| linebreaks }}
+	{% endautoescape %} -->
+
+
+	<!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">{{ post.title }}</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            {{ post.author }}
+           
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+         
+          <p class="date"> Published {{ post.publish }}
+          <hr>
+
+          <!-- Preview Image -->
+          <img class="img-fluid rounded" src="{{post.image.url }}" alt="">
+
+          <hr>
+
+          <!-- Post Content -->
+          <p class="lead">
+          {% autoescape off %}
+          	{{ post.body }}
+          {% endautoescape %} 
+          </p>
+
+          <hr>
+
+          <h4> {{ comments.count }} Comments </h4>
+         {% for comment in comments %}
+         	<div class="comment">
+            <strong>{{ comment.author }} </strong>
+         		<div class="date">{{ comment.created}} </div>
+         		
+         		<p> {{ comment.body | linebreaks }} </p>
+         	</div>
+         {% empty %}
+         	<p> No comments here yet </p>
+         {% endfor %}
+
+         {% if new_comment %}
+        <h2>Your comment has been added.</h2>
+        {% else %}
+        <h2>Add a new comment</h2>
+        <form action="." method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Post comment"></p>
+        </form>
+        {%  endif %}
+          <!-- Comments Form -->
+          
+
+          <!-- Single Comment -->
+          
+
+          <!-- Comment with nested comments -->
+         
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+          
+
+          <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                  {% for category in categorys %}
+                    <li>
+                      <a href="{{ category.get_absolute_url }}"> {{ category.title}}</a>
+                    </li>
+                   {% endfor %}
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Similar Posts</h5>
+            {% for post in similarPost %}
+            <div class="card-body">
+            <p> {{post.title}}
+              
+            </div>
+           
+           {% endfor %}
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+ 
+ {% endblock %}
