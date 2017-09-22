@@ -52,6 +52,10 @@ class Post(models.Model):
 	class Meta:
 		ordering = ('-publish',)
 
+	def recent_publication(self):
+		return self.publish <= timezone.now().date()
+		"""return self.publish>=timezone.now().date()-datetime.timedelta(weeks=8)"""
+
 	def __str__(self):
 		return self.title
 
