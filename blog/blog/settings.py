@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,12 +132,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+PROJECT_ROOT =os.path.dirname(os.path.abspath(__file__))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+
+#Extra places for collectstatic to find static files
+
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 MEDIA_URL= '/media/'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -164,3 +172,8 @@ SOCIAL_AUTH_GITHUB_KEY='661486759ab36055d355'
 SOCIAL_AUTH_GITHUB_SECRET='617072db08ac1ff99a014cf06b9a61556db7b04b' """
 
 TEMPLATE_DEBUG = False
+
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)

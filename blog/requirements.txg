@@ -15,7 +15,7 @@ django-treebeard==4.1.2
 djangocms-installer==0.9.7
 djangorestframework==3.6.3
 easy-thumbnails==2.4.1
-
+gunicorn==19.7.1
 html5lib==0.999999999
 idna==2.5
 oauthlib==2.0.2
