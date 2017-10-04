@@ -1,3 +1,10 @@
-pip install ckeditor
+pip install django==1.11.5
 
-pip install sorl-thumbnail
+pip install django-ckeditor==5.3.0
+
+pip install pillow==5.0
+
+
+
+
+
