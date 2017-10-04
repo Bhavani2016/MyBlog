@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Post, Category,Comment
+from blogapp.models import Post, Category,Comment
 from .forms import CommentForm
 
 # Create your views here.
@@ -62,5 +62,8 @@ def list_of_post_by_category(request, category_slug):
 		#If page is out of range, deliver last page of results
 		post=paginator.page(paginator.num_pages)
 	return render(request, 'category/list_of_post_by_category.html', { 'post':post,'category':category, 'categories':categories})
+
+
+	
 
 

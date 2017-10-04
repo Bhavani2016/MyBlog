@@ -26,6 +26,7 @@ import logging
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blogapp/', include('blogapp.urls',namespace='blogapp')),
+    url(r'^api/posts', include('blogapp.api.urls', namespace='blogapp-api')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$',auth_views.logout, name='logout'),

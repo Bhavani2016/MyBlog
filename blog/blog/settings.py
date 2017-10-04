@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'blogapp',
     'PIL',
     'sorl.thumbnail',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
