@@ -13,7 +13,7 @@ django-modelcluster==3.1
 django-taggit==0.22.1
 django-treebeard==4.1.2
 djangocms-installer==0.9.7
-djangorestframework==3.6.3
+djangorestframework==3.11.2
 easy-thumbnails==2.4.1
 html5lib==0.999999999
 idna==2.5
