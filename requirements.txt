@@ -6,7 +6,7 @@ dj-database-url==0.4.2
 Django==1.11.2
 django-appconf==1.0.1
 django-ckeditor==5.3.0
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-image-cropping==1.0.4
 django-js-asset==0.1.1
 django-modelcluster==3.1
